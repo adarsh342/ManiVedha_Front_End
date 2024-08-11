@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assistant Chatbot</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+        text-align: center;
+    }
+    
+    .container {
+        margin: 50px auto;
+        width: 50%;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    
+    .input-box {
+        margin-bottom: 20px;
+    }
+    
+    #symptom-input {
+        width: 80%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    #submit-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #submit-btn:disabled {
+        background-color: #a5d6a7;
+    }
+
+    #loading {
+        display: none;
+    }
+    
+    #result-box {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <h1>Health Assistant Chatbot</h1>
+        <div class="input-box">
+            <label for="symptom-input">Enter your symptoms or disease:</label>
+            <input type="text" id="symptom-input" placeholder="e.g., headache, fever">
+            <button id="submit-btn">Next</button>
+            <div id="loading">Processing...</div>
+        </div>
+        <div id="result-box"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
