@@ -1,15 +1,12 @@
 document.getElementById('submit-btn').addEventListener('click', async function() {
     const symptomInput = document.getElementById('symptom-input').value;
-    
     if (symptomInput.trim() === '') {
         alert('Please enter your symptoms or disease.');
         return;
     }
 
-    document.getElementById('loading').style.display = 'block';
-
     try {
-        const response = await fetch('https://manivedha-back-end.onrender.com/get-disease-info', {  // Correct backend URL
+        const response = await fetch('https://manivedha-back-end.onrender.com/get-disease-info', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,9 +14,11 @@ document.getElementById('submit-btn').addEventListener('click', async function()
             body: JSON.stringify({ symptoms: symptomInput })
         });
 
-        const data = await response.json();
-        document.getElementById('loading').style.display = 'none';
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
+        const data = await response.json();
         if (data.error) {
             alert(data.error);
         } else {
@@ -33,9 +32,8 @@ document.getElementById('submit-btn').addEventListener('click', async function()
             document.getElementById('result-box').innerHTML = resultHTML;
         }
     } catch (error) {
-        document.getElementById('loading').style.display = 'none';
         alert('An error occurred. Please try again later.');
-        console.error(error);
+        console.error('Error:', error);
     }
 
     document.getElementById('symptom-input').value = '';
